@@ -207,7 +207,7 @@ function mn_deps {
             sudo ${PYTHON} get-pip.py
             rm get-pip.py
         fi
-       ${python} -m pip install pexpect
+       ${python} -m pip install --break-system-packages pexpect
         $install iproute2 || $install iproute
         $install cgroup-tools || $install cgroup-bin
         $install cgroupfs-mount
@@ -537,7 +537,7 @@ function ryu {
     cd ryu
 
     # install ryu
-    sudo pip install -r tools/pip-requires -r tools/optional-requires \
+    sudo pip install --break-system-packages -r tools/pip-requires -r tools/optional-requires \
         -r tools/test-requires
     sudo python setup.py install
 
@@ -640,7 +640,7 @@ function oftest {
 
     # Install deps:
     $install tcpdump
-    $install ${PYPKG}-scapy || sudo $PYTHON -m pip install scapy
+    $install ${PYPKG}-scapy || sudo $PYTHON -m pip install --break-system-packages scapy
 
     # Install oftest:
     cd $BUILD_DIR/
