@@ -37,7 +37,7 @@ jobs:
         run: |
           sudo apt-get install -qq vlan
           export PYTHON=${{ matrix.py }}
-          sudo $PYTHON -m pip install pexpect
+          sudo $PYTHON -m pip install --break-system-packages pexpect
           util/install.sh -fw
       - name: Run core tests
         run: |

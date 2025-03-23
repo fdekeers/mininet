@@ -58,15 +58,15 @@ install-manpages: $(MANPAGES)
 
 install: install-mnexec install-manpages
 #	This seems to work on all pip versions
-	$(PYTHON) -m pip uninstall -y mininet || true
-	$(PYTHON) -m pip install .
+	$(PYTHON) -m pip uninstall -y --break-system-packages mininet || true
+	$(PYTHON) -m pip install --break-system-packages .
 
 develop: $(MNEXEC) $(MANPAGES)
 # 	Perhaps we should link these as well
 	install $(MNEXEC) $(BINDIR)
 	install $(MANPAGES) $(MANDIR)
-	$(PYTHON) -m pip uninstall -y mininet || true
-	$(PYTHON) -m pip install -e . --no-binary :all:
+	$(PYTHON) -m pip uninstall -y --break-system-packages mininet || true
+	$(PYTHON) -m pip install --break-system-packages -e . --no-binary :all:
 
 man: $(MANPAGES)
 
